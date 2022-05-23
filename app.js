@@ -12,7 +12,7 @@ const cleanBtn = document.getElementById("clean");
 
 let data = [];
 
-// Event Listeners
+// Event Listeners..
 document.addEventListener("DOMContentLoaded", updateDOM);
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
