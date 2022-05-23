@@ -5,7 +5,8 @@ const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortRichest = document.getElementById('sort-richest');
 const sortPoorest = document.getElementById('sort-poorest');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
-const merge = document.getElementById("merge");
+const englishBtn = document.getElementById("english");
+const showBtn = document.getElementById("show");
 
 let data = [];
 
@@ -16,7 +17,8 @@ sortRichest.addEventListener('click', sortByRichest);
 sortPoorest.addEventListener("click", sortByPoorest);
 calculateWealthBtn.addEventListener('click', calculateWealth);
 showMillionairesBtn.addEventListener('click', showMillionaires);
-merge.addEventListener("click", englishNames);
+englishBtn.addEventListener("click", englishNames);
+showBtn.addEventListener("click", show)
 
 
 
@@ -28,28 +30,48 @@ try{
     const data = await res.json();
 
     const user = data.results[0];
-   
-
-    const newUser = {
-        name: `${user.name.first} ${user.name.last}`,
-        money: Math.floor(Math.random()*1000000),
-    };
-
-    localStorage.setItem(newUser.name, newUser.money);
-
-    addData(newUser);
-}catch(err){
-    console.log(err);
-}
     
+    
+    
+    const newUser = {
+      name: `${user.name.first} ${user.name.last}`,
+      money: Math.floor(Math.random()*1000000),
+    };
+    
+    // localStorage.setItem(newUser.name, newUser.money);
+    
+    addData(newUser);
+  }catch(err){
+    console.log(err);
+  }
+  localStorage.setItem("data",JSON.stringify(data))
+  
+  
 }
 
-console.log(localStorage.getItem(localStorage.key(0)))
+
+
+
+
+
+function show(){
+  const newArr = JSON.parse(localStorage.getItem("data"))
+  // console.log(newArr, "here")
+  data = newArr
+  console.log(data[0])
+  console.log(newArr[0])
+  updateDOM();
+  
+}
+
 //double everyone's money
 function doubleMoney() {
+
   data = data.map((user) => {
     return { ...user, money: user.money * 2 };
   });
+  localStorage.setItem("data",JSON.stringify(data))
+  
 
   updateDOM();
 }
@@ -114,7 +136,7 @@ function getNewArr(){
   
 // filter only millionaires
 function showMillionaires() {
-    console.log(data[0].money);
+    console.log(data);
     data = data.filter(item => item.money > 1000000);
     updateDOM();
 }
