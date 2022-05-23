@@ -21,23 +21,34 @@
   }
   
   aside {
+    display: flex;
+    justify-content: wrap;
     padding: 10px 20px;
     width: 250px;
+    height: 350px;
     border-right: 1px solid #111;
     background-color: red;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    
   }
   
   button {
     cursor: pointer;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 5px;
     border: solid 1px #111;
     display: block;
-    width: 100%;
+    width: 25%;
+    height: 12%;
     padding: 10px;
     margin-bottom: 20px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
   }
   
   main {
@@ -70,3 +81,4 @@
     font-size: 20px;
     margin-bottom: 10px;
   }
+

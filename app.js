@@ -2,10 +2,23 @@ const main = document.getElementById('main');
 const addUserBtn = document.getElementById('add-user');
 const doubleBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
-const sortBtn = document.getElementById('sort');
+const sortRichest = document.getElementById('sort-richest');
+const sortPoorest = document.getElementById('sort-poorest');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
+const merge = document.getElementById("merge");
 
 let data = [];
+
+// Event Listeners
+addUserBtn.addEventListener('click', getRandomUser);
+doubleBtn.addEventListener('click', doubleMoney);
+sortRichest.addEventListener('click', sortByRichest);
+sortPoorest.addEventListener("click", sortByPoorest);
+calculateWealthBtn.addEventListener('click', calculateWealth);
+showMillionairesBtn.addEventListener('click', showMillionaires);
+merge.addEventListener("click", englishNames);
+
+
 
 
 // fetch random user and add money
@@ -19,17 +32,20 @@ try{
 
     const newUser = {
         name: `${user.name.first} ${user.name.last}`,
-        money: Math.floor(Math.random()*100000),
+        money: Math.floor(Math.random()*1000000),
     };
+
+    localStorage.setItem(newUser.name, newUser.money);
 
     addData(newUser);
 }catch(err){
-    console.log("error in getRandom Function");
+    console.log(err);
 }
-    console.log(typeof updateDOM);
+    
 }
 
-// double everyone money
+console.log(localStorage.getItem(localStorage.key(0)))
+//double everyone's money
 function doubleMoney() {
   data = data.map((user) => {
     return { ...user, money: user.money * 2 };
@@ -38,26 +54,93 @@ function doubleMoney() {
   updateDOM();
 }
 
-// sort users by richest
-function sortByRichest() {
-  data.sort((a, b) => b.money - a.money);
-  updateDOM();
-}
 
-// filter only millionaires
-function showMillionaires() {
-    data = data.filter((item)=> {item.money > 1000000});
+
+
+//sort by riches
+function sortByRichest(){
+    data.sort((a,b) => b.money - a.money)
     updateDOM();
 }
 
-//calculate wealth
-function calculateWealth() {
-  const wealth = data.reduce((acc, user) => (acc += user.money), 0);
+// sort by the poorest
+
+function sortByPoorest()  {
+    data.sort((a,b) => a.money - b.money);
+    updateDOM();
+}
+
+// English names only
+
+let englishChecker = /^[a-z]+$/i;
+
+/* note the item that get filtered out are the ones that
+dont meet the condition set in the arrow function. In 
+this e.g. the isEnglish function returns a boolean, if
+the first letter of the name is in english it stays
+if not it gets taken out. */ 
+
+function englishNames(){
+      data = data.filter(item => isEnglish(item.name[0]));
+      console.log(data)
+      updateDOM();
+}
+
+function isEnglish(str){
+    let isEng = englishChecker.test(str);
+    if (isEng){
+      return true
+    }else{
+      return false
+    }
+    // let checked = isEng ? true : false;   
+}
+
+var oldArr = [{first_name:"Colin",last_name:"Toh"},{first_name:"Addy",last_name:"Osmani"},{first_name:"Yehuda",last_name:"Katz"}];
+
+function getNewArr(){
+        
+    return oldArr.map(function(item,index){
+        item.full_name = [item.first_name,item.last_name].join(" ");
+        return item;
+    });
+    
+}
+
+
+
+  
+// data = data.filter((name)=>{checked
+  
+// filter only millionaires
+function showMillionaires() {
+    console.log(data[0].money);
+    data = data.filter(item => item.money > 1000000);
+    updateDOM();
+}
+
+
+
+/*reduce takes in 2 params, a function and a starting
+value, the function takes in 4 params (total, item, index and arr).
+The starting value is usually zero, and you don't have to put
+it if you don't want to, however if your array is empty you'll
+get an error, because that total starting value will be the first item
+of the array, but if the array is empty, you'll get an error.  
+*/
+
+function calculateWealth(){
+  const wealth = data.reduce((total, user)=>{
+    return total + user.money;
+  },0)
 
   const wealthEl = document.createElement('div');
   wealthEl.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(wealth)}</strong></h3>`;
   main.appendChild(wealthEl);
 }
+
+
+
 
 function addData(obj) {
   data.push(obj);
@@ -77,14 +160,9 @@ function updateDOM(providedData = data) {
   });
 }
 
-//Format number as money
+//Format number as money //taken from github
 function formatMoney(number) {
   return '£' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'); // 12,345.67
 }
 
-// Event Listeners
-addUserBtn.addEventListener('click', getRandomUser);
-doubleBtn.addEventListener('click', doubleMoney);
-sortBtn.addEventListener('click', sortByRichest);
-showMillionairesBtn.addEventListener('click', showMillionaires);
-calculateWealthBtn.addEventListener('click', calculateWealth);
+
