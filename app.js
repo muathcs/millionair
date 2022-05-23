@@ -7,10 +7,13 @@ const sortPoorest = document.getElementById('sort-poorest');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
 const englishBtn = document.getElementById("english");
 const showBtn = document.getElementById("show");
+const cleanBtn = document.getElementById("clean");
+
 
 let data = [];
 
 // Event Listeners
+document.addEventListener("DOMContentLoaded", updateDOM);
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
 sortRichest.addEventListener('click', sortByRichest);
@@ -19,6 +22,7 @@ calculateWealthBtn.addEventListener('click', calculateWealth);
 showMillionairesBtn.addEventListener('click', showMillionaires);
 englishBtn.addEventListener("click", englishNames);
 showBtn.addEventListener("click", show)
+cleanBtn.addEventListener("click", clean)
 
 
 
@@ -52,11 +56,18 @@ try{
 
 
 
-
+function clean(){
+  console.log("here");
+  data = [];
+  
+  localStorage.setItem("data", data);
+  updateDOM();
+}
 
 function show(){
   const newArr = JSON.parse(localStorage.getItem("data"))
   // console.log(newArr, "here")
+  console.log(newArr);
   data = newArr
   console.log(data[0])
   console.log(newArr[0])
@@ -172,6 +183,11 @@ function addData(obj) {
 //update DOM
 function updateDOM(providedData = data) {
   // clear main div
+  console.log("--------------------------------------")
+  console.log("data", data)
+  console.log("provided", providedData)
+  console.log("typeof-provided", typeof providedData)
+  console.log("typeof-Prov", typeof providedData)
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   providedData.forEach((item) => {
