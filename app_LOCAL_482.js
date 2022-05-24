@@ -12,7 +12,6 @@ const cleanBtn = document.getElementById("clean");
 
 let data = [];
 
-
 // Event Listeners
 document.addEventListener("DOMContentLoaded", getPersons);
 addUserBtn.addEventListener('click', getRandomUser);

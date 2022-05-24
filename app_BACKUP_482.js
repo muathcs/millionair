@@ -12,9 +12,13 @@ const cleanBtn = document.getElementById("clean");
 
 let data = [];
 
-
+<<<<<<< HEAD
 // Event Listeners
 document.addEventListener("DOMContentLoaded", getPersons);
+=======
+// Event Listeners..
+document.addEventListener("DOMContentLoaded", updateDOM);
+>>>>>>> 536999b67c92cca5c6068768cdf4c3c238066fd3
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
 sortRichest.addEventListener('click', sortByRichest);

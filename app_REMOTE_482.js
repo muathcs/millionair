@@ -12,9 +12,8 @@ const cleanBtn = document.getElementById("clean");
 
 let data = [];
 
-
-// Event Listeners
-document.addEventListener("DOMContentLoaded", getPersons);
+// Event Listeners..
+document.addEventListener("DOMContentLoaded", updateDOM);
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
 sortRichest.addEventListener('click', sortByRichest);
@@ -154,19 +153,6 @@ function showMillionaires() {
 }
 
 
-function getPersons(){
-  
-  
-  //let data;
-  if(localStorage.getItem("data") == false){
-    console.log("empty");
-    data = [];
-  }else{
-    data = JSON.parse(localStorage.getItem("data"));
-  }
-  
-  updateDOM();
-}
 
 /*reduce takes in 2 params, a function and a starting
 value, the function takes in 4 params (total, item, index and arr).
@@ -197,13 +183,11 @@ function addData(obj) {
 //update DOM
 function updateDOM(providedData = data) {
   // clear main div
-  // data = JSON.parse(localStorage.getItem("data"));
-  console.log("update Dom Data:", data);
-  // console.log("--------------------------------------")
-  // console.log("data", data)
-  // console.log("provided", providedData)
-  // console.log("typeof-provided", typeof providedData)
-  // console.log("typeof-Prov", typeof providedData)
+  console.log("--------------------------------------")
+  console.log("data", data)
+  console.log("provided", providedData)
+  console.log("typeof-provided", typeof providedData)
+  console.log("typeof-Prov", typeof providedData)
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   providedData.forEach((item) => {
