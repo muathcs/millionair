@@ -91,7 +91,14 @@ function clean(){
 }
 
 function show(){
-  const newArr = JSON.parse(localStorage.getItem("data"))
+  let newArr;
+
+  if(localStorage.getItem("data") == false){
+    newArr = []
+  }else{
+    newArr = JSON.parse(localStorage.getItem("data"))
+  }
+
   // console.log(newArr, "here")
   console.log(newArr);
   data = newArr
