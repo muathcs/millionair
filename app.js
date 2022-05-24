@@ -2,13 +2,13 @@ const main = document.getElementById('main');
 const addUserBtn = document.getElementById('add-user');
 const doubleBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
-const sortRichest = document.getElementById('sort-richest');
-const sortPoorest = document.getElementById('sort-poorest');
+const sortRichestBtn = document.getElementById('sort-richest');
+const sortPoorestBtn = document.getElementById('sort-poorest');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
 const englishBtn = document.getElementById("english");
 const showBtn = document.getElementById("show");
 const cleanBtn = document.getElementById("clean");
-
+const explainBtn = document.getElementById("explain");
 
 let data = [];
 
@@ -17,13 +17,14 @@ let data = [];
 document.addEventListener("DOMContentLoaded", getPersons);
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
-sortRichest.addEventListener('click', sortByRichest);
-sortPoorest.addEventListener("click", sortByPoorest);
+sortRichestBtn.addEventListener('click', sortByRichest);
+sortPoorestBtn.addEventListener("click", sortByPoorest);
 calculateWealthBtn.addEventListener('click', calculateWealth);
 showMillionairesBtn.addEventListener('click', showMillionaires);
 englishBtn.addEventListener("click", englishNames);
 showBtn.addEventListener("click", show)
 cleanBtn.addEventListener("click", clean)
+explainBtn.addEventListener("click", explain);
 
 
 
@@ -55,7 +56,19 @@ try{
 }
 
 
+function explain(){
 
+  
+  addUserBtn.innerHTML = "Fetch api"
+  doubleBtn.innerHTML = "map"
+  showMillionairesBtn.innerHTML = "filter"
+  sortRichestBtn.innerHTML = "sort"
+  sortPoorestBtn.innerHTML = "sort"
+  calculateWealthBtn.innerHTML = "reduce"
+  englishBtn.innerHTML = "only english names"
+  showBtn.innerHTML = "local storage"
+  cleanBtn.innerHTML = "local storage"
+}
 
 function clean(){
   console.log("here");

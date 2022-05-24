@@ -48,8 +48,16 @@
     font-size: 10px;
     overflow:hidden;
     text-overflow: ellipsis;
-    white-space: wrap;
+    white-space: wrap; 
   }
+
+  #english{
+    display: flex;
+    height: line-height;
+    
+  }
+
+
   
   main {
     flex: 1;
