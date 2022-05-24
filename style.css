@@ -2,7 +2,7 @@
     box-sizing: border-box;
   }
   body {
-    background: #f4f4f4;
+    background-color: #fdc57b;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,7 @@
     border-radius: 5px;
     border: solid 1px #111;
     display: block;
-    width: 25%;
+    width: 35%;
     height: 12%;
     padding: 10px;
     margin-bottom: 20px;
@@ -54,6 +54,10 @@
   main {
     flex: 1;
     padding: 10px 20px;
+  }
+
+  h1{
+    color: black;
   }
   
   h2 {
