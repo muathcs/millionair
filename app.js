@@ -95,13 +95,16 @@ function doubleMoney() {
 function sortByRichest(){
     data.sort((a,b) => b.money - a.money)
     updateDOM();
+    localStorage.setItem("data",JSON.stringify(data))
 }
 
 // sort by the poorest
 
 function sortByPoorest()  {
-    data.sort((a,b) => a.money - b.money);
-    updateDOM();
+  
+  data.sort((a,b) => a.money - b.money);
+  updateDOM();
+  localStorage.setItem("data",JSON.stringify(data))
 }
 
 // English names only
@@ -196,14 +199,6 @@ function addData(obj) {
 
 //update DOM
 function updateDOM(providedData = data) {
-  // clear main div
-  // data = JSON.parse(localStorage.getItem("data"));
-  console.log("update Dom Data:", data);
-  // console.log("--------------------------------------")
-  // console.log("data", data)
-  // console.log("provided", providedData)
-  // console.log("typeof-provided", typeof providedData)
-  // console.log("typeof-Prov", typeof providedData)
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   providedData.forEach((item) => {
