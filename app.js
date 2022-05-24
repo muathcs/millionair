@@ -58,16 +58,28 @@ try{
 
 function explain(){
 
-  
+  if (sortRichestBtn.innerHTML === "Up") {
   addUserBtn.innerHTML = "Fetch api"
-  doubleBtn.innerHTML = "map"
-  showMillionairesBtn.innerHTML = "filter"
-  sortRichestBtn.innerHTML = "sort"
-  sortPoorestBtn.innerHTML = "sort"
-  calculateWealthBtn.innerHTML = "reduce"
-  englishBtn.innerHTML = "only english names"
+  doubleBtn.innerHTML = "map()"
+  showMillionairesBtn.innerHTML = "filter()"
+  sortRichestBtn.innerHTML = "sort()"
+  sortPoorestBtn.innerHTML = "sort()"
+  calculateWealthBtn.innerHTML = "reduce()"
+  englishBtn.innerHTML = "filter()"
   showBtn.innerHTML = "local storage"
   cleanBtn.innerHTML = "local storage"
+  }
+  else{
+  addUserBtn.innerHTML = "Add"
+  doubleBtn.innerHTML = "Double"
+  showMillionairesBtn.innerHTML = "Millionairs only"
+  sortRichestBtn.innerHTML = "Up"
+  sortPoorestBtn.innerHTML = "Down"
+  calculateWealthBtn.innerHTML = "Total"
+  englishBtn.innerHTML = "English"
+  showBtn.innerHTML = "show"
+  cleanBtn.innerHTML = "clean"
+  }
 }
 
 function clean(){
