@@ -39,7 +39,7 @@ try{
     
     
     const newUser = {
-      name: `${user.name.first} ${user.name.last}`,
+      name: `${user.name.first}`,
       money: Math.floor(Math.random()*1000000),
     };
     
