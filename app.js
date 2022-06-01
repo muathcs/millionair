@@ -27,7 +27,7 @@ cleanBtn.addEventListener("click", clean)
 
 
 
-// fetch random user and add money
+// fetch random user and add money.
 async function getRandomUser() {
 try{
     const res = await fetch('https://randomuser.me/api/');
