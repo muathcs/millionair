@@ -11,6 +11,7 @@ const showBtn = document.getElementById("show");
 const cleanBtn = document.getElementById("clean");
 const explainBtn = document.getElementById("explain");
 
+// data will go here
 let data = [];
 
 
