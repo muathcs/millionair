@@ -1,26 +1,27 @@
 * {
     box-sizing: border-box;
-  }
-  body {
-    background: #f4f4f4;
+}
+body{
+    background-color: #fdc57b;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-  }
+}
   
-  .container {
+.container{
     display: flex;
     padding: 20px;
     margin: 0 auto;
     max-width: 100%;
     width: 800px;
-    background-color: #62374e;
-  }
+    background-color: #64364e;
+    border: solid 2px black;
+}
   
-  aside {
+aside{
     display: flex;
     justify-content: wrap;
     padding: 10px 20px;
@@ -30,42 +31,68 @@
     background-color: #fdc57b;
     flex-direction: column;
     flex-wrap: wrap;
+    border: solid 2px black;
 
     
-  }
+}
   
-  button {
-    cursor: pointer;
-    background-color: #ffffff;
+
+button{
+    border: solid 1px #000000;
     border-radius: 5px;
-    border: solid 1px #111;
+    background: linear-gradient(0deg, rgb(100, 54, 78) 0%, rgb(253, 197, 123) 100%);
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+    cursor: pointer;
     display: block;
-    width: 25%;
-    height: 12%;
     padding: 10px;
     margin-bottom: 20px;
     font-weight: bold;
     font-size: 10px;
+    width: 35%;
+    height: 12%;
     overflow:hidden;
     text-overflow: ellipsis;
     white-space: wrap;
-  }
+    
+}
+
+button:hover {
+      text-decoration: none;
+      color: rgb(252, 252, 252);
+}
+
+button:hover{
+    opacity: .7;
+}
+button:active{
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.2),
+      inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+
   
-  main {
+main{
     flex: 1;
     padding: 10px 20px;
-  }
+}
+
+h1{
+    color: rgb(0, 0, 0);
+}
   
-  h2 {
+h2{
     border-bottom: 1px solid #111;
     padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
     font-weight: 300;
     margin: 0 0 20px;
-  }
+}
   
-  h3 {
+h3{
     border-bottom: 1px solid #111;
     padding: 10px;
     display: flex;
@@ -73,12 +100,12 @@
     align-items: flex-end;
     font-weight: 300;
     margin: 20px 0 0;
-  }
+}
   
-  .person {
+.person{
     display: flex;
     justify-content: space-between;
     font-size: 20px;
     margin-bottom: 10px;
-  }
+}
 

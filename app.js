@@ -1,28 +1,31 @@
+//variables
 const main = document.getElementById('main');
 const addUserBtn = document.getElementById('add-user');
 const doubleBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
-const sortRichest = document.getElementById('sort-richest');
-const sortPoorest = document.getElementById('sort-poorest');
+const sortRichestBtn = document.getElementById('sort-richest');
+const sortPoorestBtn = document.getElementById('sort-poorest');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
 const englishBtn = document.getElementById("english");
 const showBtn = document.getElementById("show");
 const cleanBtn = document.getElementById("clean");
-
+const explainBtn = document.getElementById("explain");
 
 let data = [];
 
-// Event Listeners..
-document.addEventListener("DOMContentLoaded", updateDOM);
+
+// Event Listeners
+document.addEventListener("DOMContentLoaded", getPersons);
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
-sortRichest.addEventListener('click', sortByRichest);
-sortPoorest.addEventListener("click", sortByPoorest);
+sortRichestBtn.addEventListener('click', sortByRichest);
+sortPoorestBtn.addEventListener("click", sortByPoorest);
 calculateWealthBtn.addEventListener('click', calculateWealth);
 showMillionairesBtn.addEventListener('click', showMillionaires);
 englishBtn.addEventListener("click", englishNames);
 showBtn.addEventListener("click", show)
 cleanBtn.addEventListener("click", clean)
+explainBtn.addEventListener("click", explain);
 
 
 
@@ -38,7 +41,7 @@ try{
     
     
     const newUser = {
-      name: `${user.name.first} ${user.name.last}`,
+      name: `${user.name.first}`,
       money: Math.floor(Math.random()*1000000),
     };
     
@@ -54,7 +57,31 @@ try{
 }
 
 
+function explain(){
 
+  if (sortRichestBtn.innerHTML === "Up") {
+  addUserBtn.innerHTML = "Fetch api"
+  doubleBtn.innerHTML = "map()"
+  showMillionairesBtn.innerHTML = "filter()"
+  sortRichestBtn.innerHTML = "sort()"
+  sortPoorestBtn.innerHTML = "sort()"
+  calculateWealthBtn.innerHTML = "reduce()"
+  englishBtn.innerHTML = "filter()"
+  showBtn.innerHTML = "local storage"
+  cleanBtn.innerHTML = "local storage"
+  }
+  else{
+  addUserBtn.innerHTML = "Add"
+  doubleBtn.innerHTML = "Double"
+  showMillionairesBtn.innerHTML = "Millionairs only"
+  sortRichestBtn.innerHTML = "Up"
+  sortPoorestBtn.innerHTML = "Down"
+  calculateWealthBtn.innerHTML = "Total"
+  englishBtn.innerHTML = "English"
+  showBtn.innerHTML = "show"
+  cleanBtn.innerHTML = "clean"
+  }
+}
 
 function clean(){
   console.log("here");
@@ -65,7 +92,14 @@ function clean(){
 }
 
 function show(){
-  const newArr = JSON.parse(localStorage.getItem("data"))
+  let newArr;
+
+  if(localStorage.getItem("data") == false){
+    newArr = []
+  }else{
+    newArr = JSON.parse(localStorage.getItem("data"))
+  }
+
   // console.log(newArr, "here")
   console.log(newArr);
   data = newArr
@@ -94,13 +128,16 @@ function doubleMoney() {
 function sortByRichest(){
     data.sort((a,b) => b.money - a.money)
     updateDOM();
+    localStorage.setItem("data",JSON.stringify(data))
 }
 
 // sort by the poorest
 
 function sortByPoorest()  {
-    data.sort((a,b) => a.money - b.money);
-    updateDOM();
+  
+  data.sort((a,b) => a.money - b.money);
+  updateDOM();
+  localStorage.setItem("data",JSON.stringify(data))
 }
 
 // English names only
@@ -153,6 +190,19 @@ function showMillionaires() {
 }
 
 
+function getPersons(){
+  
+  
+  //let data;
+  if(localStorage.getItem("data") == false){
+    console.log("empty");
+    data = [];
+  }else{
+    data = JSON.parse(localStorage.getItem("data"));
+  }
+  
+  updateDOM();
+}
 
 /*reduce takes in 2 params, a function and a starting
 value, the function takes in 4 params (total, item, index and arr).
@@ -182,12 +232,6 @@ function addData(obj) {
 
 //update DOM
 function updateDOM(providedData = data) {
-  // clear main div
-  console.log("--------------------------------------")
-  console.log("data", data)
-  console.log("provided", providedData)
-  console.log("typeof-provided", typeof providedData)
-  console.log("typeof-Prov", typeof providedData)
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   providedData.forEach((item) => {
