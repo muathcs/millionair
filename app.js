@@ -30,15 +30,19 @@ explainBtn.addEventListener("click", explain);
 
 
 
+<<<<<<< HEAD
 
 // fetch random user and add money.
+=======
+// fetch random user and add money
+>>>>>>> c827693240c04a4b6e40d6a3e41c746a1509ec7d
 async function getRandomUser() {
 try{
     const res = await fetch('https://randomuser.me/api/');
+    
     const data = await res.json();
 
     const user = data.results[0];
-    
     
     
     const newUser = {
@@ -46,14 +50,12 @@ try{
       money: Math.floor(Math.random()*1000000),
     };
     
-    // localStorage.setItem(newUser.name, newUser.money);
     
     addData(newUser);
   }catch(err){
     console.log(err);
   }
   localStorage.setItem("data",JSON.stringify(data))
-  
   
 }
 
@@ -181,7 +183,6 @@ function getNewArr(){
 
 
   
-// data = data.filter((name)=>{checked
   
 // filter only millionaires
 function showMillionaires() {
@@ -192,9 +193,6 @@ function showMillionaires() {
 
 
 function getPersons(){
-  
-  
-  //let data;
   if(localStorage.getItem("data") == false){
     console.log("empty");
     data = [];
@@ -203,6 +201,7 @@ function getPersons(){
   }
   
   updateDOM();
+  console.log(data)
 }
 
 /*reduce takes in 2 params, a function and a starting
@@ -233,6 +232,7 @@ function addData(obj) {
 
 //update DOM
 function updateDOM(providedData = data) {
+  console.log("data", data)
   main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
   providedData.forEach((item) => {
