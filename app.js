@@ -30,12 +30,6 @@ explainBtn.addEventListener("click", explain);
 
 
 
-<<<<<<< HEAD
-
-// fetch random user and add money.
-=======
-// fetch random user and add money
->>>>>>> c827693240c04a4b6e40d6a3e41c746a1509ec7d
 async function getRandomUser() {
 try{
     const res = await fetch('https://randomuser.me/api/');
@@ -181,9 +175,6 @@ function getNewArr(){
 }
 
 
-
-  
-  
 // filter only millionaires
 function showMillionaires() {
     console.log(data);
